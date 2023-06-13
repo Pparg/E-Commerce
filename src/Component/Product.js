@@ -1,16 +1,17 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext} from "react";
 import { Context } from "../Context/context";
 import './Product.scss'
+import useMediaQuery from "../MediaQuery/useMediaQuery";
 
 export function Product() {
     let {data, setData} = useContext(Context)
     let [clicked, setClicked] = useState(false)
     let [Quantity, setQuantity] = useState(1)
     let [id, setId]= useState(1)
-    console.log(id)
+    let Mobile = useMediaQuery(500)
     let handleBigImg = (e)=>{
         e.preventDefault()
-        setId(e.target.id)
+        setId(Number(e.target.id))
     }
     let addToCart = ()=> {
         if(Quantity>0){
@@ -45,7 +46,7 @@ export function Product() {
         }
     }
     return(<section className="product_section">
-    {clicked && <div className="product_image_fullscreen">
+    {(clicked && !Mobile)&& <div className="product_image_fullscreen">
         <div className="close">
             <button onClick={()=>setClicked(!clicked)}><i className="fa-solid fa-xmark fa-xl"></i></button>
         </div>
@@ -59,10 +60,12 @@ export function Product() {
         </div>
     </div>}
     <div className="product_image">
+        {(Mobile || window.innerWidth<500) && <button onClick={()=>handleMinus()} className="mobile_buttons"><i className="fa-solid fa-chevron-left fa-xl"></i></button>}
         <img className="product_image_big" src={`./frontend_challenge/images/image-product-${id}.jpg`} alt='big img' onClick={()=> setClicked(true)}></img>
-        <div className="product_image_small">
+        {(Mobile || window.innerWidth<500) && <button onClick={()=>handlePlus()} className="mobile_buttons"><i className="fa-solid fa-chevron-right fa-xl"></i></button>}
+        {!Mobile && <div className="product_image_small">
             {data.path_image.map((url,index)=> <img id={index+1} key={index} src={`./frontend_challenge/images/${url}`} alt="imag" onClick={(e)=>handleBigImg(e)}></img>)}
-        </div>
+        </div>}
     </div>
     <div className="product_info"> 
         <p>SNEAKER COMPANY</p>

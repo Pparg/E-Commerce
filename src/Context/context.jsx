@@ -5,6 +5,7 @@ export const Context = createContext()
 // este para proveer
 export function ContextProvider({children}) {
     const [data, setData] = useState({
+
         path_cart : "image-product-1-thumbnail.jpg",
         path_image : ["image-product-1.jpg", "image-product-2.jpg","image-product-3.jpg","image-product-4.jpg" ],
         title: "Fall Limited Edition Sneakers",
