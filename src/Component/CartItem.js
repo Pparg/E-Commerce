@@ -16,7 +16,7 @@ export function CartItem({item, id}) {
     }
     return(<>
         <div className="cart-item">
-            <img src={`./frontend_challenge/images/${item.path}`} alt="img"></img>
+            <img src={`./frontend_challenge/images/${item.path}`} alt="product"></img>
                 <div className="cart-item-info">
                     <p>{item.title}</p>
                     <div className="price">
@@ -25,7 +25,7 @@ export function CartItem({item, id}) {
                         <p className="total">${item.quantity*item.price}</p>
                     </div>
                 </div>
-                 <button onClick={()=> deleteItem(id)}><i className="fa-solid fa-trash-can"></i></button>
+                 <button aria-label='remove from cart' onClick={()=> deleteItem(id)}><i className="fa-solid fa-trash-can"></i></button>
         </div>
         
     </>

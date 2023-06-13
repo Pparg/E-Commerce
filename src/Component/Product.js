@@ -48,21 +48,21 @@ export function Product() {
     return(<section className="product_section">
     {(clicked && !Mobile)&& <div className="product_image_fullscreen">
         <div className="close">
-            <button onClick={()=>setClicked(!clicked)}><i className="fa-solid fa-xmark fa-xl"></i></button>
+            <button aria-label="close big image" onClick={()=>setClicked(!clicked)}><i className="fa-solid fa-xmark fa-xl"></i></button>
         </div>
         <div className="big_img_container">
-            <button onClick={()=>handleMinus()}><i className="fa-solid fa-chevron-left fa-xl"></i></button>
+            <button aria-label="previous image" onClick={()=>handleMinus()}><i className="fa-solid fa-chevron-left fa-xl"></i></button>
             <img className="product_image_fullscreen_big" src={`./frontend_challenge/images/image-product-${id}.jpg`} alt='big img'></img>
-            <button onClick={()=>handlePlus()}><i className="fa-solid fa-chevron-right fa-xl"></i></button>
+            <button aria-label="next image" onClick={()=>handlePlus()}><i className="fa-solid fa-chevron-right fa-xl"></i></button>
         </div>
         <div className="product_image_small">
             {data.path_image.map((url,index)=> <img id={index+1} key={index} src={`./frontend_challenge/images/${url}`} alt="imag" onClick={(e)=>handleBigImg(e)}></img>)}
         </div>
     </div>}
     <div className="product_image">
-        {(Mobile || window.innerWidth<500) && <button onClick={()=>handleMinus()} className="mobile_buttons"><i className="fa-solid fa-chevron-left fa-xl"></i></button>}
+        {(Mobile || window.innerWidth<500) && <button aria-label="previous image" onClick={()=>handleMinus()} className="mobile_buttons"><i className="fa-solid fa-chevron-left fa-xl"></i></button>}
         <img className="product_image_big" src={`./frontend_challenge/images/image-product-${id}.jpg`} alt='big img' onClick={()=> setClicked(true)}></img>
-        {(Mobile || window.innerWidth<500) && <button onClick={()=>handlePlus()} className="mobile_buttons"><i className="fa-solid fa-chevron-right fa-xl"></i></button>}
+        {(Mobile || window.innerWidth<500) && <button aria-label="next image" onClick={()=>handlePlus()} className="mobile_buttons"><i className="fa-solid fa-chevron-right fa-xl"></i></button>}
         {!Mobile && <div className="product_image_small">
             {data.path_image.map((url,index)=> <img id={index+1} key={index} src={`./frontend_challenge/images/${url}`} alt="imag" onClick={(e)=>handleBigImg(e)}></img>)}
         </div>}
@@ -79,11 +79,11 @@ export function Product() {
        
         <div className="product-to-cart">
             <div className="quantity">
-                <button onClick={()=> {if(Quantity>1) return setQuantity(Quantity-1)}}><i className="fa-solid fa-minus fa-xl"></i></button>
+                <button aria-label="remove 1 from quantity" onClick={()=> {if(Quantity>1) return setQuantity(Quantity-1)}}><i className="fa-solid fa-minus fa-xl"></i></button>
                 <p>{Quantity}</p>
-                <button onClick={()=> setQuantity(Quantity+1)}><i className="fa-solid fa-plus fa-xl"></i></button>
+                <button aria-label="add 1 to quantity" onClick={()=> setQuantity(Quantity+1)}><i className="fa-solid fa-plus fa-xl"></i></button>
             </div>
-            <button onClick={()=> addToCart()} className="to-cart"><i className="fa-solid fa-cart-shopping"></i> Add to cart</button>
+            <button aria-label="add to cart" onClick={()=> addToCart()} className="to-cart"><i className="fa-solid fa-cart-shopping"></i> Add to cart</button>
         </div>
 
     </div>

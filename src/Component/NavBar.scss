@@ -167,6 +167,11 @@ $borderbottom : hsl(223, 64%, 98%);
             width: 30%;
             gap: 1rem;
         }
+    .cart{
+        .cart-item-container{
+            width: 80% !important;
+        }
+    }
     }
     
 }
